@@ -1,0 +1,77 @@
+## All user related requests
+
+## Variables
+@baseUrl = http://localhost:8080/user
+@token = Bearer {{getAdminToken.response.body.$.token}}
+@id = 1
+
+# @name getAdminToken
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "08jonatas@gmail.com",
+    "password": "1234"
+}
+
+################################################################################
+
+## Endpoints
+
+### create user ###
+POST {{baseUrl}} 
+Content-Type: application/json
+
+# all fields are mandatory 
+# email must be unique
+# role enums = {"ADMIN", "DEFAULT"}
+{
+	"name": "bob",
+	"password": "1234",
+	"email": "bob@gmail.com", 
+	"role": "DEFAULT" 
+}
+
+
+### login user ###
+POST {{baseUrl}}/login 
+Content-Type: application/json
+
+# all fields are mandatory
+{
+    "email": "08jonatas@gmail.com",
+    "password": "1234"
+}
+
+
+### get user by id ###
+# id is a mandatory param
+# id is a integer
+GET {{baseUrl}}/{{id}}
+Authorization: {{token}}
+
+
+### list all users ### 
+GET {{baseUrl}}
+Authorization: {{token}}
+# paged search
+# search param = a string that searches by name or email
+
+### update user ###
+# id is mandatory
+PUT {{baseUrl}}/{{id}}
+Content-Type: application/json
+Authorization: {{token}}
+
+# all fields are mandatory
+{
+    "name": "Amy Doe",
+    "email": "08jonatas@gmail.com"
+}
+
+### active/inactive user ###
+# id is mandatory
+DELETE {{baseUrl}}/{{id}}?active=true
+Authorization: {{token}}
+# active param = a boolean that will set the user's active property
+# active is mandatory
