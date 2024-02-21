@@ -1,4 +1,4 @@
-*resumo das suas tabelas:
+#resumo das tabelas:
 
 1. **tasks**: Armazena as informações das tarefas, como nome, descrição e data de registro.
 
@@ -16,4 +16,4 @@
 
 8. **task_responsibles**: Associa os usuários responsáveis às tarefas.
 
-Você pode realizar operações como associar múltiplos status e tags a uma tarefa, registrar atualizações nas tarefas, armazenar comentários relacionados e atribuir responsáveis às tarefas.
+É possivel realizar operações como associar múltiplos status e tags a uma tarefa, registrar atualizações nas tarefas, armazenar comentários relacionados e atribuir responsáveis às tarefas.
