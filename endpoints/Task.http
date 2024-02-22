@@ -1,0 +1,61 @@
+### All task related requests
+
+## Variables
+
+@baseUrl = http://localhost:8080/task
+@token = Bearer {{getToken.response.body.$.token}}
+@id = 3
+
+# @name getToken
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+    "email": "amy@gmail.com",
+    "password": "1234"
+}
+
+###################################################################
+
+### Endpoints
+
+### create task ###
+POST {{baseUrl}}
+Content-Type: application/json
+Authorization: {{token}}
+
+# all fields are mandatory
+{
+    "name": "task com id 3",
+    "description": "desc da task com id 3"
+}
+
+### get task by id ###
+# id is mandatory
+# id is a integer
+GET {{baseUrl}}/{{id}}
+Authorization: {{token}}
+
+### list all tasks ###
+GET {{baseUrl}}
+Content-Type: application/json
+Authorization: {{token}}
+
+### update task ###
+# id is mandatory
+PUT {{baseUrl}}/{{id}}
+Content-Type: application/json
+Authorization: {{token}}
+
+# all fields are mandatory
+{
+    "name": "task com id 1 editada",
+    "description": "desc da task com id 1"
+}
+
+### delete task by id ###
+# id is mandatory
+# admin role is required
+DELETE {{baseUrl}}/{{id}}
+Authorization: {{token}}
+

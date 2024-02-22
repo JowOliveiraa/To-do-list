@@ -33,6 +33,11 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.GET, "/user/{id}", "/user").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/user/{id}").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/user/{id}").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/task").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/task/{id}", "/task").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/comment").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/task/{id}").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/task/{id}").hasRole("ADMIN")
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

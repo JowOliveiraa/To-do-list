@@ -1,0 +1,31 @@
+### All comment related quests
+
+## Variables
+@baseUrl = http://localhost:8080/comment
+@token = Bearer {{getToken.response.body.$.token}}
+@id = 2
+
+# @name getToken
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+    "email": "amy@gmail.com",
+    "password": "1234"
+}
+
+#######################################################
+
+### Endpoints
+
+### create comment ###
+POST {{baseUrl}}
+Content-Type: application/json
+Authorization: {{token}}
+
+# all fields are mandatory
+{
+    "comment": "comentario 1 da task id 3",
+    "user": 2,
+    "task": 3
+}

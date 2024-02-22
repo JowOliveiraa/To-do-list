@@ -1,4 +1,4 @@
-## All user related requests
+### All user related requests
 
 ## Variables
 @baseUrl = http://localhost:8080/user
@@ -10,7 +10,7 @@ POST {{baseUrl}}/login
 Content-Type: application/json
 
 {
-    "email": "08jonatas@gmail.com",
+    "email": "amy@gmail.com",
     "password": "1234"
 }
 
@@ -26,9 +26,9 @@ Content-Type: application/json
 # email must be unique
 # role enums = {"ADMIN", "DEFAULT"}
 {
-	"name": "bob",
+	"name": "John Doe",
 	"password": "1234",
-	"email": "bob@gmail.com", 
+	"email": "john@gmail.com", 
 	"role": "DEFAULT" 
 }
 
