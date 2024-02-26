@@ -2,7 +2,9 @@ package com.example.todo.services;
 
 import com.example.todo.models.daos.TaskDAO;
 import com.example.todo.models.dtos.TaskDTO;
+import com.example.todo.models.entities.Status;
 import com.example.todo.models.entities.Task;
+import com.example.todo.repositories.StatusRepository;
 import com.example.todo.repositories.TaskRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,15 @@ public class TaskService {
     @Autowired
     private TaskRepository repository;
 
+    @Autowired
+    private StatusRepository statusRepository;
+
     @Transactional
     public ResponseEntity<Object> register(TaskDTO dto) {
 
         var task = new Task(dto);
 
+        task.setStatus(returnDefaltStatus());
         repository.save(task);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(new TaskDAO(task));
@@ -63,5 +69,10 @@ public class TaskService {
         repository.deleteById(id);
 
         return ResponseEntity.status(HttpStatus.OK).body("Tarefa deletada!");
+    }
+
+    public Status returnDefaltStatus() {
+
+        return statusRepository.getReferenceById(6L);
     }
 }

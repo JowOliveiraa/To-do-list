@@ -11,6 +11,7 @@ public record TaskDAO(
         String name,
         String description,
         LocalDateTime registerAt,
+        StatusDAO status,
         List<CommentDAO> comments
 ) {
     public TaskDAO(Task task) {
@@ -20,6 +21,7 @@ public record TaskDAO(
                 task.getName(),
                 task.getDescription(),
                 task.getRegisterAt(),
+                new StatusDAO(task.getStatus()),
                 task.getComments().stream().map(CommentDAO::new).collect(Collectors.toList())
         );
     }

@@ -2,12 +2,10 @@ package com.example.todo.models.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record CommentDTO(
+public record StatusDTO(
         @NotBlank
-        String comment,
+        String name,
         @NotBlank
-        Long user,
-        @NotBlank
-        Long task
+        String color
 ) {
 }

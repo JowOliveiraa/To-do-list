@@ -1,6 +1,7 @@
 package com.example.todo.exceptions;
 
 import jakarta.persistence.EntityNotFoundException;
+import org.hibernate.TransientPropertyValueException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,4 +27,35 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
         return ResponseEntity.status(error.status()).body(error);
     }
+
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<Object> nullPointer(NullPointerException exception) {
+
+        ErrorDAO error = new ErrorDAO(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
+
+        return ResponseEntity.status(error.status()).body(error);
+    }
+
+    @ExceptionHandler(TransientPropertyValueException.class)
+    public ResponseEntity<Object> transientValue(TransientPropertyValueException exception) {
+
+        ErrorDAO error = new ErrorDAO(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
+
+        return ResponseEntity.status(error.status()).body(error);
+    }
+
+//    @Override
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+//
+//        Map<String, String> errors = new HashMap<>();
+//        ex.getBindingResult().getAllErrors().forEach((error) -> {
+//            String fieldName = ((FieldError) error).getField();
+//            String errorMessage = error.getDefaultMessage();
+//            errors.put(fieldName, errorMessage);
+//        });
+//
+//        return this.handleExceptionInternal(ex, errors, headers, status, request);
+//    }
 }

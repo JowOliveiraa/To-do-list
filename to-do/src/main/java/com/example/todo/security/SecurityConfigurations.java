@@ -38,6 +38,10 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.POST, "/comment").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/task/{id}").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/task/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/status", "/status/set").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/status").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/status/{id}").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/status/{id}").authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

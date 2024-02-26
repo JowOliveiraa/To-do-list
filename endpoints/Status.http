@@ -1,10 +1,10 @@
-### All task related requests
+### All status related requests
 
 ## Variables
 
-@baseUrl = http://localhost:8080/task
+@baseUrl = http://localhost:8080/status
 @token = Bearer {{getToken.response.body.$.token}}
-@id = 15
+@id = 7
 
 # @name getToken
 POST http://localhost:8080/user/login
@@ -15,34 +15,39 @@ Content-Type: application/json
     "password": "1234"
 }
 
-###################################################################
+
+###########################################################
 
 ### Endpoints
 
-### create task ###
+### create status ###
 POST {{baseUrl}}
 Content-Type: application/json
 Authorization: {{token}}
 
 # all fields are mandatory
 {
-    "name": "task com id nova",
-    "description": "desc da task nova"
+    "name": "para apagar",
+    "color": "f"
 }
 
-### get task by id ###
-# id is mandatory
-# id is a integer
-GET {{baseUrl}}/{{id}}
+### set a status on a task ###
+POST {{baseUrl}}/set
 Content-Type: application/json
 Authorization: {{token}}
 
-### list all tasks ###
+# all fields are mandatory
+{
+    "task": 15,
+    "status": 7
+}
+
+### list and search all status ###
 GET {{baseUrl}}
-Content-Type: application/json
 Authorization: {{token}}
+# param search searches by name
 
-### update task ###
+### update status by id ###
 # id is mandatory
 PUT {{baseUrl}}/{{id}}
 Content-Type: application/json
@@ -50,13 +55,12 @@ Authorization: {{token}}
 
 # all fields are mandatory
 {
-    "name": "task com id 1 editada",
-    "description": "desc da task com id 1"
+    "name": "para apagar editado",
+    "color": "rosa editada"
 }
 
-### delete task by id ###
+### delete status by id ###
+# it is not possible to delete a status linked to a task
 # id is mandatory
-# admin role is required
 DELETE {{baseUrl}}/{{id}}
 Authorization: {{token}}
-

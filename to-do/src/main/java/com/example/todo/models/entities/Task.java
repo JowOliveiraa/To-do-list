@@ -4,6 +4,7 @@ import com.example.todo.models.dtos.TaskDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -26,6 +27,10 @@ public class Task {
 
     @CreationTimestamp
     private LocalDateTime registerAt;
+
+    @Setter
+    @ManyToOne
+    private Status status;
 
     @OneToMany(mappedBy = "task", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Comment> comments = new ArrayList<>();
