@@ -6,7 +6,4 @@ CREATE TABLE users(
     active boolean NOT NULL,
     role enum('ADMIN', 'DEFAULT') NOT NULL,
     register_at date NOT NULL
-)
-ENGINE=InnoDB
-DEFAULT CHARSET=utf8mb4
-COLLATE=utf8mb4_0900_ai_ci;
+);

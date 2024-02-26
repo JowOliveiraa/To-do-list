@@ -3,3 +3,6 @@ CREATE TABLE status(
     name varchar(50) NOT NULL,
     color varchar(50) NOT NULL
 );
+
+INSERT INTO status(name, color)
+    VALUES('default', 'default');

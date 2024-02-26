@@ -73,6 +73,6 @@ public class TaskService {
 
     public Status returnDefaltStatus() {
 
-        return statusRepository.getReferenceById(6L);
+        return statusRepository.getReferenceById(1L);
     }
 }

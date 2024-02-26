@@ -15,7 +15,6 @@ Content-Type: application/json
     "password": "1234"
 }
 
-
 ###########################################################
 
 ### Endpoints
@@ -39,7 +38,7 @@ Authorization: {{token}}
 # all fields are mandatory
 {
     "task": 15,
-    "status": 7
+    "status": 6
 }
 
 ### list and search all status ###

@@ -26,10 +26,10 @@ Content-Type: application/json
 # email must be unique
 # role enums = {"ADMIN", "DEFAULT"}
 {
-	"name": "John Doe",
+	"name": "Amy Doe",
 	"password": "1234",
-	"email": "john@gmail.com", 
-	"role": "DEFAULT" 
+	"email": "amy@gmail.com", 
+	"role": "ADMIN" 
 }
 
 
