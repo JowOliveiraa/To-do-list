@@ -69,6 +69,11 @@ public class StatusService {
     @Transactional
     public ResponseEntity<Object> deleteStatusById(Long id) {
 
+        if (taskRepository.existsByStatusId(id)) {
+
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Status atrelados a tasks não podem ser apagados!");
+        }
+
         repository.deleteById(id);
 
         return ResponseEntity.status(HttpStatus.OK).build();
