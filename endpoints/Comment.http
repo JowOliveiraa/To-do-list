@@ -25,7 +25,7 @@ Authorization: {{token}}
 
 # all fields are mandatory
 {
-    "comment": "comentario 1 da task id 14",
-    "user": 2,
-    "task": 14
+    "comment": "comentario 2 da task id 1",
+    "user": 1,
+    "task": 1
 }

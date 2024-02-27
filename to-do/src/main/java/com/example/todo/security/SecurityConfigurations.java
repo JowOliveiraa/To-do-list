@@ -42,6 +42,10 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.GET, "/status").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/status/{id}").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/status/{id}").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/tag", "/tag/set").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/tag").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/tag/{id}").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/tag/{id}", "/tag/remove").authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

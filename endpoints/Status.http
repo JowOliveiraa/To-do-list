@@ -26,8 +26,8 @@ Authorization: {{token}}
 
 # all fields are mandatory
 {
-    "name": "para apagar",
-    "color": "f"
+    "name": "para qa",
+    "color": "verde"
 }
 
 ### set a status on a task ###
@@ -37,8 +37,8 @@ Authorization: {{token}}
 
 # all fields are mandatory
 {
-    "task": 15,
-    "status": 6
+    "task": 1,
+    "status": 2
 }
 
 ### list and search all status ###

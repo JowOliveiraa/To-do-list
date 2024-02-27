@@ -4,7 +4,7 @@
 
 @baseUrl = http://localhost:8080/task
 @token = Bearer {{getToken.response.body.$.token}}
-@id = 15
+@id = 1
 
 # @name getToken
 POST http://localhost:8080/user/login
@@ -26,8 +26,8 @@ Authorization: {{token}}
 
 # all fields are mandatory
 {
-    "name": "task com id nova",
-    "description": "desc da task nova"
+    "name": "task com id nova 2",
+    "description": "desc da task nova 2"
 }
 
 ### get task by id ###
@@ -36,6 +36,7 @@ Authorization: {{token}}
 GET {{baseUrl}}/{{id}}
 Content-Type: application/json
 Authorization: {{token}}
+
 
 ### list all tasks ###
 GET {{baseUrl}}
