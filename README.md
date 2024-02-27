@@ -14,7 +14,9 @@ A aplicação consiste nas seguintes entidades:
 
 - **Comment**: Representa um comentário em uma tarefa. Cada comentário tem um ID, texto do comentário, data de registro, e está associado a um usuário e uma tarefa.
 
-- **Status**: Representa o status de uma tarefa. Cada status tem um ID, nome e cor.
+- **Status**: Representa um status que pode ser associado a varias tarefas. Cada status tem um ID, nome e cor.
+
+- **Tag**: Representa uma tag que pode ser associada a varias tarefas. Cada tag tem um ID, um nome e uma cor.
 
 ## Serviços
 
@@ -24,9 +26,11 @@ A aplicação fornece os seguintes serviços:
 
 - **TaskService**: Gerencia as operações relacionadas às tarefas, como criação, buscar a tarefa por ID, listar todas as tarefas, atualização e exclusão por ID.
 
+- **CommentService**: Gerencia as operações relacionadas aos comentários, como registro de comentário.
+
 - **StatusService**: Gerencia as operações relacionadas aos status, como criação, definição de status para uma tarefa, busca de status e atualização de status.
 
-- **CommentService**: Gerencia as operações relacionadas aos comentários, como registro de comentário.
+- **TagService**: Gerencia as operações relacionadas às tags, como criar uma nova tag, associar uma tag a uma tarefa, listar todas as tags, atualizar uma tag, remover uma tag de uma tarefa e deletar uma tag.
 
 ## Dependências
 
