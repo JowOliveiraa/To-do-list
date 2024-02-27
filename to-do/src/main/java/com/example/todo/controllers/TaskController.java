@@ -1,6 +1,7 @@
 package com.example.todo.controllers;
 
 import com.example.todo.models.daos.TaskDAO;
+import com.example.todo.models.dtos.SetResponsibleDTO;
 import com.example.todo.models.dtos.TaskDTO;
 import com.example.todo.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,15 @@ public class TaskController {
     @DeleteMapping("/{id}")
     ResponseEntity<Object> deleteTaskById(@PathVariable Long id) {
         return service.deleteTaskById(id);
+    }
+
+    @PostMapping("/responsible/add")
+    public ResponseEntity<Object> addResponsible(@RequestBody SetResponsibleDTO dto) {
+        return service.addResponsible(dto);
+    }
+
+    @DeleteMapping("/responsible/remove")
+    public ResponseEntity<Object> removeResponsible(@RequestBody SetResponsibleDTO dto) {
+        return service.removeResponsible(dto);
     }
 }

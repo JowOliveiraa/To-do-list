@@ -1,13 +1,14 @@
 package com.example.todo.models.dtos;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record CommentDTO(
         @NotBlank
         String comment,
-        @NotBlank
-        Long user,
-        @NotBlank
-        Long task
+        @NotNull
+        Long userId,
+        @NotNull
+        Long taskId
 ) {
 }

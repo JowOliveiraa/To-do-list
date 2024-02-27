@@ -47,7 +47,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 //    @Override
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)
 //    @ExceptionHandler(MethodArgumentNotValidException.class)
-//    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+//    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode statusId, WebRequest request) {
 //
 //        Map<String, String> errors = new HashMap<>();
 //        ex.getBindingResult().getAllErrors().forEach((error) -> {
@@ -56,6 +56,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 //            errors.put(fieldName, errorMessage);
 //        });
 //
-//        return this.handleExceptionInternal(ex, errors, headers, status, request);
+//        return this.handleExceptionInternal(ex, errors, headers, statusId, request);
 //    }
 }

@@ -37,6 +37,10 @@ public class Task {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Tag> tags = new ArrayList<>();
 
+    @Setter
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<User> responsible = new ArrayList<>();
+
     @OneToMany(mappedBy = "task", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Comment> comments = new ArrayList<>();
 

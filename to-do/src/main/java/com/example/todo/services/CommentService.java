@@ -28,8 +28,8 @@ public class CommentService {
     @Transactional
     public ResponseEntity<Object> register(CommentDTO dto) {
 
-        var task = taskRepository.getReferenceById(dto.task());
-        var user = userRepository.getReferenceById(dto.user());
+        var task = taskRepository.getReferenceById(dto.taskId());
+        var user = userRepository.getReferenceById(dto.userId());
         var comment = new Comment(dto, user, task);
 
         repository.save(comment);

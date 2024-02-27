@@ -38,7 +38,7 @@ Authorization: {{token}}
 # all fields are mandatory
 {
     "taskId": 2,
-    "tagId": 5
+    "tagId": 2
 }
 
 ### list all tags ###

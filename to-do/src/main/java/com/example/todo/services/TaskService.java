@@ -1,11 +1,13 @@
 package com.example.todo.services;
 
 import com.example.todo.models.daos.TaskDAO;
+import com.example.todo.models.dtos.SetResponsibleDTO;
 import com.example.todo.models.dtos.TaskDTO;
 import com.example.todo.models.entities.Status;
 import com.example.todo.models.entities.Task;
 import com.example.todo.repositories.StatusRepository;
 import com.example.todo.repositories.TaskRepository;
+import com.example.todo.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,6 +28,9 @@ public class TaskService {
 
     @Autowired
     private StatusRepository statusRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Transactional
     public ResponseEntity<Object> register(TaskDTO dto) {
@@ -74,5 +79,32 @@ public class TaskService {
     public Status returnDefaltStatus() {
 
         return statusRepository.getReferenceById(1L);
+    }
+
+    @Transactional
+    public ResponseEntity<Object> addResponsible(SetResponsibleDTO dto) {
+
+        var user = userRepository.getReferenceById(dto.responsibleId());
+        var task = repository.getReferenceById(dto.taskId());
+
+        task.getResponsible().add(user);
+        repository.save(task);
+
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @Transactional
+    public ResponseEntity<Object> removeResponsible(SetResponsibleDTO dto) {
+
+        var user = userRepository.getReferenceById(dto.responsibleId());
+        var tasks = repository.findAllByResponsibleContains(user);
+
+        tasks.forEach(task -> {
+
+            task.getResponsible().remove(user);
+
+        });
+
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

@@ -4,7 +4,7 @@
 
 @baseUrl = http://localhost:8080/task
 @token = Bearer {{getToken.response.body.$.token}}
-@id = 1
+@id = 2
 
 # @name getToken
 POST http://localhost:8080/user/login
@@ -60,4 +60,26 @@ Authorization: {{token}}
 # admin role is required
 DELETE {{baseUrl}}/{{id}}
 Authorization: {{token}}
+
+### add a responsible ###
+POST {{baseUrl}}/responsible/add
+Content-Type: application/json
+Authorization: {{token}}
+
+# all fields are mandatory
+{
+    "taskId": 2,
+    "responsibleId": 2
+}
+
+### remove a responsible ###
+DELETE {{baseUrl}}/responsible/remove
+Content-Type: application/json
+Authorization: {{token}}
+
+# all fields are mandatory
+{
+    "taskId": 1,
+    "responsibleId": 2
+}
 

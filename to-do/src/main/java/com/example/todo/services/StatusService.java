@@ -37,8 +37,8 @@ public class StatusService {
     @Transactional
     public ResponseEntity<Object> setStatus(SetStatusDTO dto) {
 
-        var status = repository.getReferenceById(dto.status());
-        var task = taskRepository.getReferenceById(dto.task());
+        var status = repository.getReferenceById(dto.statusId());
+        var task = taskRepository.getReferenceById(dto.taskId());
 
         task.setStatus(status);
 

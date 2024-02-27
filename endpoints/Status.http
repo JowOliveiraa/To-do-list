@@ -37,8 +37,8 @@ Authorization: {{token}}
 
 # all fields are mandatory
 {
-    "task": 1,
-    "status": 2
+    "taskId": 2,
+    "statusId": 2
 }
 
 ### list and search all status ###

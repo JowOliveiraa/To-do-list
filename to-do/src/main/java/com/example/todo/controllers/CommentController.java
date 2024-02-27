@@ -2,6 +2,7 @@ package com.example.todo.controllers;
 
 import com.example.todo.models.dtos.CommentDTO;
 import com.example.todo.services.CommentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class CommentController {
     private CommentService service;
 
     @PostMapping
-    public ResponseEntity<Object> register(@RequestBody CommentDTO dto) {
+    public ResponseEntity<Object> register(@Valid @RequestBody CommentDTO dto) {
         return service.register(dto);
     }
 }

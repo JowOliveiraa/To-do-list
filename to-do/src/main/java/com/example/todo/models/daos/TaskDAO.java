@@ -13,6 +13,7 @@ public record TaskDAO(
         LocalDateTime registerAt,
         StatusDAO status,
         List<TagDAO> tags,
+        List<UserDAO> responsible,
         List<CommentDAO> comments
 ) {
     public TaskDAO(Task task) {
@@ -24,6 +25,7 @@ public record TaskDAO(
                 task.getRegisterAt(),
                 new StatusDAO(task.getStatus()),
                 task.getTags().stream().map(TagDAO::new).toList(),
+                task.getResponsible().stream().map(UserDAO::new).toList(),
                 task.getComments().stream().map(CommentDAO::new).toList()
         );
     }

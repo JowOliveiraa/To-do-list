@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface StatusRepository extends JpaRepository<Status, Long> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM status WHERE name LIKE %?1%")
+    @Query(nativeQuery = true, value = "SELECT * FROM statusId WHERE name LIKE %?1%")
     List<Status> searchStatusByName(String search);
 }
